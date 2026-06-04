@@ -1,59 +1,20 @@
 "use client";
 
-import { useRef } from "react";
-import Image from "next/image";
+import { useEffect, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
+import Script from "next/script";
 
-const projects = [
-  {
-    id: 1,
-    title: "Neon Nights",
-    client: "Nike",
-    industry: "Sports Apparel",
-    deliverables: "Commercial",
-    timeline: "3 Weeks",
-    role: "Director, DP",
-    image: "https://images.unsplash.com/photo-1552068751-34cb5cf059b5?q=80&w=2865&auto=format&fit=crop",
-    width: "w-[85vw] md:w-[40vw]",
-    aspect: "aspect-[4/3]",
-  },
-  {
-    id: 2,
-    title: "Echoes",
-    client: "A24 Films",
-    industry: "Entertainment",
-    deliverables: "Short Film",
-    timeline: "3 Months",
-    role: "Cinematographer",
-    image: "https://images.unsplash.com/photo-1440404653325-ab127d49abc1?q=80&w=2940&auto=format&fit=crop",
-    width: "w-[75vw] md:w-[30vw]",
-    aspect: "aspect-[3/4]",
-  },
-  {
-    id: 3,
-    title: "Urban Drift",
-    client: "Porsche",
-    industry: "Automotive",
-    deliverables: "Brand Film",
-    timeline: "4 Weeks",
-    role: "Creative Director",
-    image: "https://images.unsplash.com/photo-1503376712341-ea1d7b1a629b?q=80&w=2940&auto=format&fit=crop",
-    width: "w-[85vw] md:w-[35vw]",
-    aspect: "aspect-square",
-  },
-  {
-    id: 4,
-    title: "Soundscapes",
-    client: "Spotify",
-    industry: "Technology",
-    deliverables: "Visual Identity",
-    timeline: "2 Months",
-    role: "Lead Designer",
-    image: "https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?q=80&w=2940&auto=format&fit=crop",
-    width: "w-[90vw] md:w-[50vw]",
-    aspect: "aspect-[16/9]",
-  },
+const reels = [
+  { id: 1, client: "JECRC University", url: "https://www.instagram.com/reel/DVQqiu8EQGx/" },
+  { id: 2, client: "JECRC University", url: "https://www.instagram.com/reel/DVNU2N_kZzu/" },
+  { id: 3, client: "JECRC University", url: "https://www.instagram.com/reel/DVLbtGEkcQ4/" },
+  { id: 4, client: "JECRC University", url: "https://www.instagram.com/reel/DUYlIdik_6P/" },
+  { id: 5, client: "JECRC University", url: "https://www.instagram.com/reel/DXRRLLWAHas/" },
+  { id: 6, client: "JECRC University", url: "https://www.instagram.com/reel/DYKHceJATpJ/" },
+  { id: 7, client: "Hakim's Aalim Salon", url: "https://www.instagram.com/reel/DVRLun2jHsr/" },
+  { id: 8, client: "Hakim's Aalim Salon", url: "https://www.instagram.com/reel/DG7gd4zpYYx/" },
+  { id: 9, client: "Hive India", url: "https://www.instagram.com/reel/DXZ3e-lknUW/" },
 ];
 
 export default function FeaturedProjects() {
@@ -62,11 +23,24 @@ export default function FeaturedProjects() {
     target: containerRef,
   });
 
-  // Adjust the scroll distance based on total width, -80% works better for larger scrolling walls
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-75%"]);
+  // Since we have 9 portrait reels, we need a larger scroll range.
+  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-85%"]);
+
+  useEffect(() => {
+    // Process Instagram embeds on mount
+    if (typeof window !== "undefined") {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const win = window as any;
+      if (win.instgrm) {
+        win.instgrm.Embeds.process();
+      }
+    }
+  }, []);
 
   return (
-    <section id="work" ref={containerRef} className="relative h-[300vh] bg-background">
+    <section id="work" ref={containerRef} className="relative h-[400vh] bg-background">
+      <Script async src="//www.instagram.com/embed.js" strategy="lazyOnload" />
+      
       <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
         
         <div className="container mx-auto px-6 mb-12">
@@ -99,57 +73,36 @@ export default function FeaturedProjects() {
         {/* Horizontal Scroll Gallery */}
         <motion.div 
           style={{ x }} 
-          className="flex gap-8 px-6 w-max"
+          className="flex gap-12 px-6 w-max items-center h-[600px]"
           data-cursor="DRAG"
         >
-          {projects.map((project) => (
+          {reels.map((reel) => (
             <div 
-              key={project.id} 
-              className={`relative group ${project.width} flex-shrink-0`}
-              data-cursor="VIEW"
+              key={reel.id} 
+              className="relative group w-[326px] md:w-[400px] flex-shrink-0 flex flex-col"
             >
-              <div className={`w-full ${project.aspect} bg-card overflow-hidden relative border border-border`}>
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  sizes="(max-width: 768px) 85vw, 40vw"
-                  className="object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-105 grayscale group-hover:grayscale-0"
-                />
-                
-                {/* Metadata Drawer Overlay */}
-                <div className="absolute inset-0 bg-background/80 opacity-0 group-hover:opacity-100 transition-opacity duration-500 backdrop-blur-md flex flex-col justify-end p-8">
-                  <div className="translate-y-8 group-hover:translate-y-0 transition-transform duration-500">
-                    <h3 className="font-heading text-4xl uppercase tracking-tighter mb-6 text-white flex items-center gap-4">
-                      {project.title}
-                      <ArrowRight size={24} className="opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-700 delay-100" />
-                    </h3>
-                    
-                    <div className="grid grid-cols-2 gap-y-6 text-[10px] uppercase tracking-widest text-secondary-text">
-                      <div>
-                        <span className="block text-white/30 mb-1">Client</span>
-                        <span className="text-white">{project.client}</span>
-                      </div>
-                      <div>
-                        <span className="block text-white/30 mb-1">Role</span>
-                        <span className="text-white">{project.role}</span>
-                      </div>
-                      <div>
-                        <span className="block text-white/30 mb-1">Industry</span>
-                        <span className="text-white">{project.industry}</span>
-                      </div>
-                      <div>
-                        <span className="block text-white/30 mb-1">Timeline</span>
-                        <span className="text-white">{project.timeline}</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <div className="w-full bg-black/20 overflow-hidden relative border border-border/50 rounded-xl p-2 h-[580px] flex justify-center items-center">
+                <blockquote 
+                  className="instagram-media w-full h-full" 
+                  data-instgrm-permalink={`${reel.url}?utm_source=ig_embed&amp;utm_campaign=loading`}
+                  data-instgrm-version="14" 
+                  style={{ 
+                    background: '#000', 
+                    border: 0, 
+                    margin: 0, 
+                    padding: 0, 
+                    width: '100%',
+                    height: '100%'
+                  }}
+                >
+                </blockquote>
               </div>
               
-              <div className="mt-4 flex justify-between items-center group-hover:opacity-0 transition-opacity duration-500">
-                <h4 className="font-mono text-sm tracking-widest uppercase">{project.title}</h4>
-                <span className="text-[10px] tracking-widest uppercase text-secondary-text">{project.client}</span>
+              <div className="mt-6 flex justify-between items-center group-hover:text-primary transition-colors duration-300 px-2">
+                <h4 className="font-mono text-sm tracking-widest uppercase text-white/80">{reel.client}</h4>
+                <a href={reel.url} target="_blank" rel="noreferrer" className="text-secondary-text hover:text-white transition-colors">
+                  <ArrowUpRight size={16} />
+                </a>
               </div>
             </div>
           ))}
