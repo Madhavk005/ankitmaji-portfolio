@@ -6,14 +6,14 @@ import { X } from "lucide-react";
 
 export default function EasterEgg() {
   const [isOpen, setIsOpen] = useState(false);
-  const [keysPressed, setKeysPressed] = useState<string[]>([]);
+  const [, setKeysPressed] = useState<string[]>([]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       const key = e.key.toLowerCase();
       
       setKeysPressed((prev) => {
-        const newKeys = [...prev, key].slice(-2); // Keep only last 2 keys
+        const newKeys = [...prev, key].slice(-2);
         if (newKeys.join("") === "am") {
           setIsOpen(true);
         }
@@ -57,11 +57,11 @@ export default function EasterEgg() {
 
             <div className="max-w-2xl mx-auto">
               <h2 className="text-sm tracking-[0.4em] uppercase text-primary/80 mb-12 border-b border-[#333] pb-4">
-                Director's Notes // Internal Archive
+                Director&apos;s Notes // Internal Archive
               </h2>
               
               <h1 className="text-4xl md:text-5xl italic mb-12">
-                "We don't remember days, we remember moments."
+                &quot;We don&apos;t remember days, we remember moments.&quot;
               </h1>
 
               <div className="space-y-8 text-lg leading-relaxed text-white/70">
@@ -69,10 +69,10 @@ export default function EasterEgg() {
                   Every project starts as a mess of ideas. Scraps of paper, fragmented voice memos, half-watched films at 3 AM. The process is never clean.
                 </p>
                 <p>
-                  I've learned that the best frames are often mistakes. A sudden light leak, a talent forgetting their mark, a shadow falling exactly where you didn't plan. You have to be prepared enough to capture the accident.
+                  I&apos;ve learned that the best frames are often mistakes. A sudden light leak, a talent forgetting their mark, a shadow falling exactly where you didn&apos;t plan. You have to be prepared enough to capture the accident.
                 </p>
                 <p>
-                  Design is the structure. Cinematography is the emotion. When you combine them, you don't just get a visual—you get an experience. That's what I'm chasing. Every single time.
+                  Design is the structure. Cinematography is the emotion. When you combine them, you don&apos;t just get a visual—you get an experience. That&apos;s what I&apos;m chasing. Every single time.
                 </p>
                 
                 <div className="pt-12 border-t border-[#333] mt-12">
