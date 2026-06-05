@@ -11,8 +11,8 @@ export default function CreativeDNA() {
   ];
 
   const timeline = [
-    { year: "2020", title: "Started Designing" },
-    { year: "2022", title: "Freelancing" },
+    { year: "2019", title: "Started Designing" },
+    { year: "2019", title: "Freelancing" },
     { year: "2024", title: "Filmmaking" },
     { year: "2026", title: "Creative Direction" },
   ];

@@ -21,7 +21,7 @@ export default function ContactSection() {
     setIsSubmitting(true);
     
     try {
-      const response = await fetch("https://formspree.io/f/hello@ankitmaji.com", {
+      const response = await fetch("https://formspree.io/f/majiankit243@gmail.com", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData)
@@ -68,9 +68,9 @@ export default function ContactSection() {
                 <span className="flex items-center gap-2 text-sm text-primary tracking-widest uppercase mb-4">
                   <Mail size={16} /> Email
                 </span>
-                <a href="mailto:hello@ankitmaji.com" className="text-2xl hover:text-primary transition-colors flex items-center gap-2 group">
-                  hello@ankitmaji.com
-                  <ArrowRight size={20} className="opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
+                <a href="mailto:majiankit243@gmail.com" className="text-2xl hover:text-primary transition-colors flex items-center gap-2 group break-all">
+                  majiankit243@gmail.com
+                  <ArrowRight size={20} className="opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0" />
                 </a>
               </div>
               <div>
@@ -78,9 +78,12 @@ export default function ContactSection() {
                   <LinkIcon size={16} /> Socials
                 </span>
                 <div className="flex gap-6">
-                  {["Instagram", "Vimeo", "Behance", "LinkedIn"].map((social) => (
-                    <a key={social} href="#" className="text-sm md:text-base hover:text-white transition-colors underline-offset-4 hover:underline">
-                      {social}
+                  {[
+                    { name: "Instagram", url: "https://www.instagram.com/_majiankit_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
+                    { name: "LinkedIn", url: "https://www.linkedin.com/in/majiankit/" }
+                  ].map((social) => (
+                    <a key={social.name} href={social.url} target="_blank" rel="noopener noreferrer" className="text-sm md:text-base hover:text-white transition-colors underline-offset-4 hover:underline">
+                      {social.name}
                     </a>
                   ))}
                 </div>

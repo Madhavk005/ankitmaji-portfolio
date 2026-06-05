@@ -5,13 +5,16 @@ import { useRef } from "react";
 import Image from "next/image";
 import { Camera } from "lucide-react";
 const frames = [
-  { src: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=800&q=80", cam: "ARRI ALEXA MINI LF", lens: "35MM T1.5", format: "4.5K ARRIRAW" },
-  { src: "https://images.unsplash.com/photo-1542204165-65bf26472b9b?w=800&q=80", cam: "SONY FX3", lens: "50MM F1.2", format: "4K 120FPS" },
-  { src: "https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=800&q=80", cam: "RED KOMODO 6K", lens: "24MM T2.1", format: "6K REDCODE RAW" },
-  { src: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=800&q=80", cam: "SONY VENICE 2", lens: "85MM T1.5", format: "8K X-OCN" },
-  { src: "https://images.unsplash.com/photo-1505322022379-7c3353ee6291?w=800&q=80", cam: "ARRI ALEXA 35", lens: "18MM T1.8", format: "4K ARRIRAW" },
-  { src: "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=800&q=80", cam: "SONY FX6", lens: "35MM F1.4", format: "4K 60FPS" },
-  { src: "https://images.unsplash.com/photo-1518131362791-c9165b6e4e03?w=800&q=80", cam: "RED V-RAPTOR XL", lens: "50MM T2.0", format: "8K REDCODE RAW" },
+  { src: "/Photos/DSC09873.png", cam: "Sony a6700 (ILCE-6700)", lens: "50mm F1.8", format: "4K 10-BIT" },
+  { src: "/Photos/DSC09879.png", cam: "Sony a6700 (ILCE-6700)", lens: "50mm F1.8", format: "4K 120FPS" },
+  { src: "/Photos/DSC09890.png", cam: "Sony a6700 (ILCE-6700)", lens: "50mm F1.8", format: "4K XAVC S-I" },
+  { src: "/Photos/DSC09900.png", cam: "Sony a6700 (ILCE-6700)", lens: "50mm F1.8", format: "4K S-LOG3" },
+  { src: "/Photos/DSC09912.png", cam: "Sony a6700 (ILCE-6700)", lens: "50mm F1.8", format: "4K 60FPS" },
+  { src: "/Photos/DSC09920.png", cam: "Sony a6700 (ILCE-6700)", lens: "50mm F1.8", format: "4K 4:2:2" },
+  { src: "/Photos/DSC09926.png", cam: "Sony a6700 (ILCE-6700)", lens: "50mm F1.8", format: "4K 10-BIT" },
+  { src: "/Photos/DSC09934.png", cam: "Sony a6700 (ILCE-6700)", lens: "50mm F1.8", format: "4K S-CINETONE" },
+  { src: "/Photos/DSC09941.png", cam: "Sony a6700 (ILCE-6700)", lens: "50mm F1.8", format: "4K S-LOG3" },
+  { src: "/Photos/DSC00010.png", cam: "Sony a6700 (ILCE-6700)", lens: "50mm F1.8", format: "4K 4:2:2" },
 ];
 
 export default function FilmStripGallery() {
@@ -20,8 +23,7 @@ export default function FilmStripGallery() {
     target: containerRef,
     offset: ["start end", "end start"],
   });
-
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-30%"]);
+  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-50%"]);
 
   return (
     <section ref={containerRef} className="py-32 bg-surface overflow-hidden relative border-y border-border">

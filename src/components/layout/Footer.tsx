@@ -31,10 +31,10 @@ export default function Footer() {
           >
             <Magnetic>
               <a 
-                href="mailto:hello@ankitmaji.com"
+                href="mailto:majiankit243@gmail.com"
                 className="inline-block text-2xl font-mono tracking-widest border-b border-foreground pb-2 hover:text-secondary-text hover:border-secondary-text transition-colors"
               >
-                hello@ankitmaji.com
+                majiankit243@gmail.com
               </a>
             </Magnetic>
           </motion.div>
@@ -62,13 +62,18 @@ export default function Footer() {
           <div className="flex flex-col gap-4">
             <span className="text-[10px] tracking-widest uppercase text-secondary-text">Connect</span>
             <div className="grid grid-cols-2 gap-y-4">
-              {['Instagram', 'Behance', 'LinkedIn', 'YouTube'].map((social) => (
+              {[
+                { name: 'Instagram', url: 'https://www.instagram.com/_majiankit_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==' },
+                { name: 'LinkedIn', url: 'https://www.linkedin.com/in/majiankit/' }
+              ].map((social) => (
                 <a 
-                  key={social} 
-                  href="#" 
+                  key={social.name} 
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="group font-heading text-lg uppercase tracking-wider hover:text-secondary-text transition-colors flex items-center justify-between w-full md:w-fit md:gap-2"
                 >
-                  {social}
+                  {social.name}
                   <ArrowUpRight size={16} className="opacity-0 -translate-x-2 translate-y-2 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-300" />
                 </a>
               ))}

@@ -1,10 +1,20 @@
 "use client";
 
+import { useState, useRef } from "react";
 import { motion } from "framer-motion";
-import { Play, Clock, Film, Briefcase, Video } from "lucide-react";
-import Image from "next/image";
+import { Clock, Film, Briefcase, Video, Volume2, VolumeX } from "lucide-react";
 
 export default function FeaturedShowreel() {
+  const [isMuted, setIsMuted] = useState(true);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const toggleMute = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (videoRef.current) {
+      videoRef.current.muted = !videoRef.current.muted;
+      setIsMuted(videoRef.current.muted);
+    }
+  };
   return (
     <section id="showreel" className="py-24 md:py-32 bg-background relative z-10">
       <div className="container mx-auto px-4 md:px-6">
@@ -33,20 +43,25 @@ export default function FeaturedShowreel() {
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           className="relative w-full aspect-video md:aspect-[21/9] bg-secondary overflow-hidden group cursor-pointer"
         >
-          <Image
-            src="https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=2918&auto=format&fit=crop"
-            alt="Showreel Thumbnail"
-            fill
-            sizes="100vw"
-            className="object-cover transition-transform duration-1000 group-hover:scale-105 opacity-80"
+          <video
+            ref={videoRef}
+            src="/Vids/Yeh Dil.mp4"
+            autoPlay
+            muted={isMuted}
+            loop
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-80"
           />
-          <div className="absolute inset-0 bg-background/20 group-hover:bg-background/40 transition-colors duration-500" />
-          
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-20 h-20 md:w-28 md:h-28 rounded-full glass flex items-center justify-center transition-transform duration-500 group-hover:scale-110">
-              <Play className="w-8 h-8 md:w-10 md:h-10 text-white fill-white ml-2" />
-            </div>
-          </div>
+          <div className="absolute inset-0 bg-background/20 group-hover:bg-background/40 transition-colors duration-500 pointer-events-none" />
+
+          {/* Audio Toggle Button */}
+          <button
+            onClick={toggleMute}
+            className="absolute bottom-6 right-6 md:bottom-8 md:right-8 z-30 w-12 h-12 rounded-full glass flex items-center justify-center text-white opacity-0 group-hover:opacity-100 hover:scale-110 transition-all duration-300"
+          >
+            {isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
+          </button>
+
 
           {/* Film Strip Accents */}
           <div className="absolute top-0 left-0 w-full h-4 bg-background/80 flex justify-around items-center px-2">
@@ -64,10 +79,10 @@ export default function FeaturedShowreel() {
         {/* Stats */}
         <div className="mt-16 md:mt-24 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 border-t border-border pt-12">
           {[
-            { label: "Years Experience", value: "05+", icon: Clock },
-            { label: "Projects Delivered", value: "120+", icon: Film },
-            { label: "Brands Worked With", value: "45+", icon: Briefcase },
-            { label: "Videos Produced", value: "80+", icon: Video },
+            { label: "Years Experience", value: "2+", icon: Clock },
+            { label: "Projects Delivered", value: "50+", icon: Film },
+            { label: "Brands Worked With", value: "6+", icon: Briefcase },
+            { label: "Videos Produced", value: "100+", icon: Video },
           ].map((stat, i) => (
             <motion.div
               key={stat.label}

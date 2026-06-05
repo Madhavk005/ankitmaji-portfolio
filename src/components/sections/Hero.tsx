@@ -41,7 +41,7 @@ export default function Hero() {
             playsInline
             className="w-full h-full object-cover"
           >
-            <source src="https://cdn.coverr.co/videos/coverr-dark-abstract-particles-2646/1080p.mp4" type="video/mp4" />
+            <source src="/Vids/The First Chapter.mp4" type="video/mp4" />
           </video>
         </div>
 
