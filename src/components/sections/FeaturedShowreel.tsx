@@ -49,17 +49,24 @@ export default function FeaturedShowreel() {
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           className="relative w-full aspect-video md:aspect-[21/9] bg-secondary overflow-hidden group cursor-pointer"
         >
-          <video
-            ref={videoRef}
-            src="/Vids/Yeh Dil.mp4"
-            autoPlay
-            muted={isMuted}
-            loop
-            playsInline
-            preload="auto"
-            className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-80"
-          />
-          <div className="absolute inset-0 bg-background/20 group-hover:bg-background/40 transition-colors duration-500 pointer-events-none" />
+          <a
+            href="https://www.instagram.com/reel/DXRRLLWAHas/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+            target="_blank"
+            rel="noopener noreferrer"
+            className="absolute inset-0 block w-full h-full"
+          >
+            <video
+              ref={videoRef}
+              src="/Vids/Yeh Dil.mp4"
+              autoPlay
+              muted={isMuted}
+              loop
+              playsInline
+              preload="auto"
+              className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-80"
+            />
+            <div className="absolute inset-0 bg-background/20 group-hover:bg-background/40 transition-colors duration-500 pointer-events-none" />
+          </a>
 
           {/* Audio Toggle Button */}
           <button
