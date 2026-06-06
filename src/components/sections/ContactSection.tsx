@@ -147,9 +147,10 @@ export default function ContactSection() {
                     className="w-full bg-transparent border-b border-secondary pb-2 focus:outline-none focus:border-primary transition-colors text-foreground appearance-none"
                   >
                     <option value="" className="bg-background text-foreground/50">Select range</option>
-                    <option value="50K-1L" className="bg-background">₹50K - ₹1L</option>
-                    <option value="1L-5L" className="bg-background">₹1L - ₹5L</option>
-                    <option value="5L+" className="bg-background">₹5L+</option>
+                    <option value="1K-10K" className="bg-background">₹1K - ₹10K</option>
+                    <option value="10K-20K" className="bg-background">₹10K - ₹20K</option>
+                    <option value="under-50K" className="bg-background">Under ₹50K</option>
+                    <option value="50K-1L+" className="bg-background">₹50K - ₹1L and more</option>
                   </select>
                 </div>
               </div>
