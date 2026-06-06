@@ -21,10 +21,16 @@ export default function ContactSection() {
     setIsSubmitting(true);
     
     try {
-      const response = await fetch("https://formspree.io/f/majiankit243@gmail.com", {
+      const response = await fetch("https://formsubmit.co/ajax/majiankit243@gmail.com", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData)
+        headers: { 
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          ...formData,
+          _subject: "New Portfolio Inquiry from " + formData.name,
+        })
       });
       
       if (response.ok) {
@@ -141,9 +147,9 @@ export default function ContactSection() {
                     className="w-full bg-transparent border-b border-secondary pb-2 focus:outline-none focus:border-primary transition-colors text-foreground appearance-none"
                   >
                     <option value="" className="bg-background text-foreground/50">Select range</option>
-                    <option value="1k-5k" className="bg-background">$1k - $5k</option>
-                    <option value="5k-10k" className="bg-background">$5k - $10k</option>
-                    <option value="10k+" className="bg-background">$10k+</option>
+                    <option value="50K-1L" className="bg-background">₹50K - ₹1L</option>
+                    <option value="1L-5L" className="bg-background">₹1L - ₹5L</option>
+                    <option value="5L+" className="bg-background">₹5L+</option>
                   </select>
                 </div>
               </div>
