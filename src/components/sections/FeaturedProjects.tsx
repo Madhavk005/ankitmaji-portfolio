@@ -180,7 +180,6 @@ export default function FeaturedProjects() {
                   src={project.video}
                   autoPlay
                   muted
-                  defaultMuted
                   loop
                   playsInline
                   preload="auto"

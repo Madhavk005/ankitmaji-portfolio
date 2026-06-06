@@ -54,7 +54,6 @@ export default function FeaturedShowreel() {
             src="/Vids/Yeh Dil.mp4"
             autoPlay
             muted={isMuted}
-            defaultMuted
             loop
             playsInline
             preload="auto"

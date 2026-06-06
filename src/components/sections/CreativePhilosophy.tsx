@@ -8,9 +8,6 @@ export default function CreativePhilosophy() {
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"],
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
   });
 
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -39,7 +36,6 @@ export default function CreativePhilosophy() {
           src="/Vids/Manjeet Ka Ladka.mp4"
           autoPlay
           muted
-          defaultMuted
           loop
           playsInline
           preload="auto"
