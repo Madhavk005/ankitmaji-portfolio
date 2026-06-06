@@ -48,8 +48,10 @@ export default function FeaturedShowreel() {
             src="/Vids/Yeh Dil.mp4"
             autoPlay
             muted={isMuted}
+            defaultMuted
             loop
             playsInline
+            preload="auto"
             className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-80"
           />
           <div className="absolute inset-0 bg-background/20 group-hover:bg-background/40 transition-colors duration-500 pointer-events-none" />

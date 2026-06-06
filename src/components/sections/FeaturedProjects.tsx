@@ -172,8 +172,10 @@ export default function FeaturedProjects() {
                   src={project.video}
                   autoPlay
                   muted
+                  defaultMuted
                   loop
                   playsInline
+                  preload="auto"
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-105 grayscale group-hover:grayscale-0"
                 />
                 

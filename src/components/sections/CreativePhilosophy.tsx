@@ -27,8 +27,10 @@ export default function CreativePhilosophy() {
           src="/Vids/Manjeet Ka Ladka.mp4"
           autoPlay
           muted
+          defaultMuted
           loop
           playsInline
+          preload="auto"
           className="w-full h-full object-cover"
         />
       </motion.div>

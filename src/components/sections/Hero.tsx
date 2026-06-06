@@ -38,7 +38,9 @@ export default function Hero() {
             autoPlay
             loop
             muted
+            defaultMuted
             playsInline
+            preload="auto"
             className="w-full h-full object-cover"
           >
             <source src="/Vids/The First Chapter.mp4" type="video/mp4" />
