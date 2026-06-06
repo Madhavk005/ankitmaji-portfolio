@@ -14,6 +14,7 @@ const projects = [
     timeline: "2 Weeks",
     role: "Director, DP",
     video: "/Vids/An Evening With Zakir Khan.mp4",
+    link: "https://www.instagram.com/_majiankit_/",
     width: "w-[85vw] md:w-[40vw]",
     aspect: "aspect-[4/3]",
   },
@@ -26,6 +27,7 @@ const projects = [
     timeline: "3 Weeks",
     role: "Cinematographer",
     video: "/Vids/The Nights That Shook JU.mp4",
+    link: "https://www.instagram.com/_majiankit_/",
     width: "w-[75vw] md:w-[30vw]",
     aspect: "aspect-[3/4]",
   },
@@ -38,6 +40,7 @@ const projects = [
     timeline: "4 Weeks",
     role: "Creative Director",
     video: "/Vids/The Art of the Runway.mp4",
+    link: "https://www.instagram.com/_majiankit_/",
     width: "w-[85vw] md:w-[35vw]",
     aspect: "aspect-square",
   },
@@ -50,6 +53,7 @@ const projects = [
     timeline: "2 Months",
     role: "Lead Designer",
     video: "/Vids/The Hive Experience.mp4",
+    link: "https://www.instagram.com/_majiankit_/",
     width: "w-[90vw] md:w-[50vw]",
     aspect: "aspect-[16/9]",
   },
@@ -62,6 +66,7 @@ const projects = [
     timeline: "3 Weeks",
     role: "Director",
     video: "/Vids/Home Away From Home.mp4",
+    link: "https://www.instagram.com/_majiankit_/",
     width: "w-[80vw] md:w-[35vw]",
     aspect: "aspect-[3/4]",
   },
@@ -74,6 +79,7 @@ const projects = [
     timeline: "2 Weeks",
     role: "Cinematographer",
     video: "/Vids/India Men's Weekend 2025.mp4",
+    link: "https://www.instagram.com/_majiankit_/",
     width: "w-[85vw] md:w-[45vw]",
     aspect: "aspect-[16/9]",
   },
@@ -86,6 +92,7 @@ const projects = [
     timeline: "4 Weeks",
     role: "Director",
     video: "/Vids/The First Chapter.mp4",
+    link: "https://www.instagram.com/_majiankit_/",
     width: "w-[75vw] md:w-[30vw]",
     aspect: "aspect-[4/5]",
   },
@@ -98,6 +105,7 @@ const projects = [
     timeline: "1 Week",
     role: "Editor, DP",
     video: "/Vids/The First Spark of Rhythm'26.mp4",
+    link: "https://www.instagram.com/_majiankit_/",
     width: "w-[85vw] md:w-[40vw]",
     aspect: "aspect-square",
   },
@@ -110,6 +118,7 @@ const projects = [
     timeline: "2 Months",
     role: "Director",
     video: "/Vids/मातृभाषा.mp4",
+    link: "https://www.instagram.com/_majiankit_/",
     width: "w-[80vw] md:w-[35vw]",
     aspect: "aspect-[4/3]",
   },
@@ -170,9 +179,12 @@ export default function FeaturedProjects() {
           data-cursor="DRAG"
         >
           {projects.map((project) => (
-            <div 
+            <a 
               key={project.id} 
-              className={`relative group ${project.width} flex-shrink-0`}
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`relative group block ${project.width} flex-shrink-0 cursor-pointer`}
               data-cursor="VIEW"
             >
               <div className={`w-full ${project.aspect} bg-card overflow-hidden relative border border-border`}>
@@ -220,7 +232,7 @@ export default function FeaturedProjects() {
                 <h4 className="font-mono text-sm tracking-widest uppercase">{project.title}</h4>
                 <span className="text-[10px] tracking-widest uppercase text-secondary-text">{project.client}</span>
               </div>
-            </div>
+            </a>
           ))}
         </motion.div>
 
