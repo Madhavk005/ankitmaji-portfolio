@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Mouse, ArrowDown } from "lucide-react";
 import Magnetic from "@/components/utils/Magnetic";
@@ -13,6 +13,17 @@ export default function Hero() {
     target: containerRef,
     offset: ["start start", "end end"]
   });
+
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    // Force play on mount to bypass aggressive mobile browser autoplay blocking (especially Android Chrome)
+    if (videoRef.current) {
+      videoRef.current.play().catch((err) => {
+        console.log("Video autoplay prevented by browser policy:", err);
+      });
+    }
+  }, []);
 
   // Reduce maximum scale to 40 to prevent mobile Safari rendering lock/scroll lag
   const scale = useTransform(
@@ -35,6 +46,7 @@ export default function Hero() {
         {/* Background Asset (The Video playing inside the mask) */}
         <div className="absolute inset-0 w-full h-full">
           <video
+            ref={videoRef}
             autoPlay
             loop
             muted

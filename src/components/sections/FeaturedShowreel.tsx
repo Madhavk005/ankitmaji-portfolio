@@ -1,12 +1,18 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Clock, Film, Briefcase, Video, Volume2, VolumeX } from "lucide-react";
 
 export default function FeaturedShowreel() {
   const [isMuted, setIsMuted] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(e => console.log("Showreel video blocked:", e));
+    }
+  }, []);
 
   const toggleMute = (e: React.MouseEvent) => {
     e.stopPropagation();

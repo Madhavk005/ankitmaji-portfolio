@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
@@ -120,6 +120,14 @@ export default function FeaturedProjects() {
   const { scrollYProgress } = useScroll({
     target: containerRef,
   });
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+    const videos = containerRef.current.querySelectorAll("video");
+    videos.forEach((vid) => {
+      vid.play().catch((e) => console.log("Gallery video blocked:", e));
+    });
+  }, []);
 
   // Adjust the scroll distance based on total width, -85% works better for larger scrolling walls
   const x = useTransform(scrollYProgress, [0, 1], ["0%", "-85%"]);

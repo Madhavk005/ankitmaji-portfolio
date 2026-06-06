@@ -1,14 +1,25 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 
 export default function CreativePhilosophy() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"],
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
   });
+
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(e => console.log("Philosophy video blocked:", e));
+    }
+  }, []);
 
   const y1 = useTransform(scrollYProgress, [0, 1], [0, -300]);
   const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.1, 1, 0.1]);
@@ -24,6 +35,7 @@ export default function CreativePhilosophy() {
         className="absolute inset-0 z-0 opacity-20 grayscale pointer-events-none w-full h-[150%]"
       >
         <video
+          ref={videoRef}
           src="/Vids/Manjeet Ka Ladka.mp4"
           autoPlay
           muted
